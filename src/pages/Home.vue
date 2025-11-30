@@ -8,7 +8,7 @@ import TimerDisplay from '../components/TimerDisplay.vue'
 import TimerControls from '../components/TimerControls.vue'
 import ModeSwitcher from '../components/ModeSwitcher.vue'
 import TaskList from '../components/TaskList.vue'
-import { Settings, Volume2, VolumeX, Plus, Keyboard, Sun, Moon } from 'lucide-vue-next'
+import { Settings, Volume2, VolumeX, Plus, Keyboard, Sun, Moon, Info } from 'lucide-vue-next'
 import ShortcutsModal from '../components/ShortcutsModal.vue'
 import { useTheme } from '../composables/useTheme'
 
@@ -129,6 +129,15 @@ const toggleTaskInput = () => {
             title="Keyboard Shortcuts"
           >
             <Keyboard :size="24" />
+          </button>
+
+          <!-- About/Help Button -->
+          <button 
+            @click="$emit('navigate', 'about')"
+            class="absolute top-8 left-32 text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
+            title="About & Help"
+          >
+            <Info :size="24" />
           </button>
 
           <!-- Mute Toggle -->

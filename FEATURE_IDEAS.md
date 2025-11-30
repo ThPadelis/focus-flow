@@ -29,11 +29,11 @@
 - Light mode option
 - Custom background colors
 
-### 6. Keyboard Shortcuts
-- Space to start/pause
-- R to reset
-- 1/2/3 to switch modes
-- S for settings
+### ~~6. Keyboard Shortcuts~~
+- ~~Space to start/pause~~
+- ~~R to reset~~
+- ~~1/2/3 to switch modes~~
+- ~~S for settings~~
 
 ### ~~7. Progress Ring/Circle~~
 - ~~Visual circular progress indicator around the timer~~
@@ -66,7 +66,7 @@
 ### Quick Wins (High Impact, Low Effort)
 1. ✅ **Task List Integration** - ~~Currently implementing~~ Implemented
 2. ~~Browser Notifications~~ Implemented
-3. Keyboard Shortcuts
+3. ~~Keyboard Shortcuts~~ Implemented
 
 ### Medium Priority
 4. Statistics Dashboard

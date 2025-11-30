@@ -1,12 +1,15 @@
 <script setup>
-import { ref, computed } from 'vue'
+const emit = defineEmits(['navigate'])
+
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useTimer } from '../composables/useTimer'
 import { useTasks } from '../composables/useTasks'
 import TimerDisplay from '../components/TimerDisplay.vue'
 import TimerControls from '../components/TimerControls.vue'
 import ModeSwitcher from '../components/ModeSwitcher.vue'
 import TaskList from '../components/TaskList.vue'
-import { Settings, Volume2, VolumeX, Plus } from 'lucide-vue-next'
+import { Settings, Volume2, VolumeX, Plus, Keyboard } from 'lucide-vue-next'
+import ShortcutsModal from '../components/ShortcutsModal.vue'
 
 const {
   timeLeft,
@@ -27,6 +30,43 @@ const { tasks, addTask } = useTasks()
 
 const showTaskInput = ref(false)
 const newTaskText = ref('')
+const showShortcuts = ref(false)
+
+const handleKeydown = (e) => {
+  // Ignore if user is typing in an input
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return
+
+  switch(e.code) {
+    case 'Space':
+      e.preventDefault() // Prevent scrolling
+      if (isRunning.value) pause()
+      else start()
+      break
+    case 'KeyR':
+      reset()
+      break
+    case 'Digit1':
+      setMode('work')
+      break
+    case 'Digit2':
+      setMode('short')
+      break
+    case 'Digit3':
+      setMode('long')
+      break
+    case 'KeyS':
+      emit('navigate', 'settings')
+      break
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
+})
 
 // Calculate progress percentage
 const progress = computed(() => {
@@ -73,9 +113,18 @@ const toggleTaskInput = () => {
           <button 
             @click="$emit('navigate', 'settings')"
             class="absolute top-8 left-8 text-zinc-500 hover:text-white transition-colors"
-            title="Settings"
+            title="Settings (S)"
           >
             <Settings :size="24" />
+          </button>
+
+          <!-- Shortcuts Button -->
+          <button 
+            @click="showShortcuts = true"
+            class="absolute top-8 left-20 text-zinc-500 hover:text-white transition-colors"
+            title="Keyboard Shortcuts"
+          >
+            <Keyboard :size="24" />
           </button>
 
           <!-- Mute Toggle -->
@@ -161,5 +210,10 @@ const toggleTaskInput = () => {
         <TaskList />
       </div>
     </div>
+    
+    <ShortcutsModal 
+      :is-open="showShortcuts"
+      @close="showShortcuts = false"
+    />
   </div>
 </template>

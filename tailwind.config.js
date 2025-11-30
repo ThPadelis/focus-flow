@@ -4,8 +4,14 @@ export default {
         "./index.html",
         "./src/**/*.{vue,js,ts,jsx,tsx}",
     ],
+    // Note: darkMode is configured in CSS using @custom-variant in Tailwind v4
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                primary: 'var(--color-primary)',
+                'primary-dark': 'var(--color-primary-dark)',
+            }
+        },
     },
     plugins: [],
 }

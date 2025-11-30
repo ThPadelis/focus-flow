@@ -24,10 +24,10 @@
 
 ## **Customization & UX**
 
-### 5. Themes
-- Multiple color schemes (e.g., forest green, ocean blue, sunset orange)
-- Light mode option
-- Custom background colors
+### ~~5. Themes~~
+- ~~Multiple color schemes (e.g., forest green, ocean blue, sunset orange)~~
+- ~~Light mode option~~
+- ~~Custom background colors~~
 
 ### ~~6. Keyboard Shortcuts~~
 - ~~Space to start/pause~~
@@ -64,9 +64,9 @@
 ## **Implementation Priority**
 
 ### Quick Wins (High Impact, Low Effort)
-1. ✅ **Task List Integration** - ~~Currently implementing~~ Implemented
-2. ~~Browser Notifications~~ Implemented
-3. ~~Keyboard Shortcuts~~ Implemented
+1. ~~**Task List Integration**~~ - Implemented
+2. ~~Browser Notifications~~ - Implemented
+3. ~~Keyboard Shortcuts~~ - Implemented
 
 ### Medium Priority
 4. Statistics Dashboard
@@ -74,7 +74,7 @@
 6. ~~Progress Ring/Circle~~ Implemented
 
 ### Future Enhancements
-7. Themes
+7. ~~Themes~~ Implemented
 8. Session Goals
 9. Data Export
 10. Focus Quotes

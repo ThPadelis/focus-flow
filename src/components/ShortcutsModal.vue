@@ -32,18 +32,18 @@ const shortcuts = [
     <div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4">
       <!-- Backdrop -->
       <div 
-        class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        class="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
         @click="$emit('close')"
       ></div>
 
       <!-- Modal -->
-      <div class="relative w-full max-w-md bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden">
+      <div class="relative w-full max-w-md bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-2xl shadow-2xl overflow-hidden transition-colors duration-300">
         <div class="p-6">
           <div class="flex items-center justify-between mb-6">
-            <h2 class="text-xl font-semibold text-white">Keyboard Shortcuts</h2>
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Keyboard Shortcuts</h2>
             <button 
               @click="$emit('close')"
-              class="text-zinc-500 hover:text-white transition-colors"
+              class="text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
             >
               <X :size="20" />
             </button>
@@ -53,18 +53,18 @@ const shortcuts = [
             <div 
               v-for="shortcut in shortcuts" 
               :key="shortcut.key"
-              class="flex items-center justify-between p-3 bg-zinc-800/50 rounded-lg border border-zinc-800"
+              class="flex items-center justify-between p-3 bg-gray-100 dark:bg-zinc-800/50 rounded-lg border border-gray-200 dark:border-zinc-800"
             >
-              <span class="text-zinc-300">{{ shortcut.description }}</span>
-              <kbd class="px-2.5 py-1 bg-zinc-800 border border-zinc-700 rounded-md text-sm font-mono text-zinc-400 min-w-[2rem] text-center shadow-sm">
+              <span class="text-gray-700 dark:text-zinc-300">{{ shortcut.description }}</span>
+              <kbd class="px-2.5 py-1 bg-gray-200 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-md text-sm font-mono text-gray-700 dark:text-zinc-400 min-w-[2rem] text-center shadow-sm">
                 {{ shortcut.key }}
               </kbd>
             </div>
           </div>
         </div>
         
-        <div class="px-6 py-4 bg-zinc-800/30 border-t border-zinc-800 text-center">
-          <p class="text-xs text-zinc-500">
+        <div class="px-6 py-4 bg-gray-50 dark:bg-zinc-800/30 border-t border-gray-200 dark:border-zinc-800 text-center">
+          <p class="text-xs text-gray-500 dark:text-zinc-500">
             Shortcuts are disabled when typing in text fields
           </p>
         </div>

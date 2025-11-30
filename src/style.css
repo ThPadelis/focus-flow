@@ -1,5 +1,24 @@
 @import "tailwindcss";
 
+/* Tailwind v4 requires @custom-variant for dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+    --color-primary: #ef4444;
+    --color-primary-dark: #dc2626;
+}
+
+/* Base body styles - will be overridden by component-level classes */
 body {
+    @apply transition-colors duration-300;
+}
+
+/* Dark mode body background */
+html.dark body {
     @apply bg-zinc-950 text-white;
+}
+
+/* Light mode body background */
+html:not(.dark) body {
+    @apply bg-gray-50 text-gray-900;
 }

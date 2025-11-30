@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="text-8xl font-bold text-white tracking-tighter tabular-nums">
+  <div class="text-8xl font-bold text-gray-900 dark:text-white tracking-tighter tabular-nums">
     {{ time }}
   </div>
 </template>

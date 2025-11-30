@@ -13,10 +13,10 @@
 - Streak counter (consecutive days of using the timer)
 - Best productivity hours visualization
 
-### 3. Notifications
-- Browser notifications when timer completes
+### ~~3. Notifications~~
+- ~~Browser notifications when timer completes~~
 - ~~Custom notification sounds for different timer types~~
-- Desktop notifications (using Notification API)
+- ~~Desktop notifications (using Notification API)~~
 
 ### 4. Auto-start Breaks
 - Option to automatically start break timer after work session

@@ -198,15 +198,28 @@ export function useTimer() {
 
     const sendNotification = async () => {
         if (notificationPermission.value === 'granted') {
+            const modeNames = {
+                work: 'Work Session',
+                short: 'Short Break',
+                long: 'Long Break'
+            };
+
+            const title = `${modeNames[mode.value]} Complete!`;
+            const body = mode.value === 'work'
+                ? 'Great job! Time for a break.'
+                : 'Break is over. Ready to focus?';
+
             try {
                 // Try to use Service Worker registration first (better for PWAs)
                 if ('serviceWorker' in navigator) {
                     const registration = await navigator.serviceWorker.ready;
                     if (registration) {
-                        await registration.showNotification('FocusFlow', {
-                            body: 'Timer completed!',
+                        await registration.showNotification(title, {
+                            body: body,
                             icon: '/icon-192.png',
-                            vibrate: [200, 100, 200]
+                            vibrate: [200, 100, 200],
+                            badge: '/icon-192.png',
+                            tag: 'focusflow-timer'
                         });
                         return;
                     }
@@ -216,9 +229,10 @@ export function useTimer() {
             }
 
             // Fallback to standard API
-            new Notification('FocusFlow', {
-                body: 'Timer completed!',
-                icon: '/icon-192.png'
+            new Notification(title, {
+                body: body,
+                icon: '/icon-192.png',
+                tag: 'focusflow-timer'
             });
         }
     };

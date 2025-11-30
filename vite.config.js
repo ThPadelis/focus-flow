@@ -10,6 +10,10 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
+      devOptions: {
+        enabled: true,
+        suppressWarnings: true,
+      },
       manifest: {
         name: 'FocusFlow - Pomodoro Timer',
         short_name: 'FocusFlow',
@@ -53,7 +57,7 @@ export default defineConfig({
             }
           }
         ]
-      }
+      },
     })
   ],
 })

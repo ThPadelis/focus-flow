@@ -171,6 +171,7 @@ export function useTimer() {
 
         // Play completion sound
         playCompletionSound();
+        sendNotification();
 
         reset();
     };
@@ -181,6 +182,46 @@ export function useTimer() {
         mode.value = savedMode;
         timeLeft.value = modes[savedMode];
     }
+
+    // Notification logic
+    const notificationPermission = ref(Notification.permission);
+
+    const requestNotificationPermission = async () => {
+        if (!('Notification' in window)) {
+            alert('This browser does not support desktop notifications');
+            return;
+        }
+
+        const permission = await Notification.requestPermission();
+        notificationPermission.value = permission;
+    };
+
+    const sendNotification = async () => {
+        if (notificationPermission.value === 'granted') {
+            try {
+                // Try to use Service Worker registration first (better for PWAs)
+                if ('serviceWorker' in navigator) {
+                    const registration = await navigator.serviceWorker.ready;
+                    if (registration) {
+                        await registration.showNotification('FocusFlow', {
+                            body: 'Timer completed!',
+                            icon: '/icon-192.png',
+                            vibrate: [200, 100, 200]
+                        });
+                        return;
+                    }
+                }
+            } catch (e) {
+                console.error('SW notification failed, falling back:', e);
+            }
+
+            // Fallback to standard API
+            new Notification('FocusFlow', {
+                body: 'Timer completed!',
+                icon: '/icon-192.png'
+            });
+        }
+    };
 
     return {
         timeLeft,
@@ -199,6 +240,9 @@ export function useTimer() {
         selectedSound,
         sounds,
         setSound,
-        previewSound
+        previewSound,
+        notificationPermission,
+        requestNotificationPermission,
+        sendNotification // Expose for testing
     };
 }

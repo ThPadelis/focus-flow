@@ -65,7 +65,7 @@
 
 ### Quick Wins (High Impact, Low Effort)
 1. ✅ **Task List Integration** - ~~Currently implementing~~ Implemented
-2. Browser Notifications
+2. ~~Browser Notifications~~ Implemented
 3. Keyboard Shortcuts
 
 ### Medium Priority

@@ -4,4 +4,6 @@ import App from './App.vue'
 // Import theme to initialize it early
 import './composables/useTheme'
 
-createApp(App).mount('#app')
+import router from './router'
+
+createApp(App).use(router).mount('#app')

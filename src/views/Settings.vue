@@ -1,10 +1,11 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useTimer } from '../composables/useTimer'
 import { useTheme } from '../composables/useTheme'
 import { ArrowLeft, Volume2 } from 'lucide-vue-next'
 
-const emit = defineEmits(['navigate'])
+const router = useRouter()
 
 const { MODES, updateDurations, selectedSound, sounds, setSound, previewSound } = useTimer()
 const { currentTheme, themes, setTheme } = useTheme()
@@ -26,7 +27,7 @@ const save = () => {
     short: form.value.short * 60,
     long: form.value.long * 60
   })
-  emit('navigate', 'home')
+  router.push('/')
 }
 </script>
 
@@ -35,7 +36,7 @@ const save = () => {
     <div class="w-full max-w-md bg-white dark:bg-zinc-900 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-zinc-800 relative transition-colors duration-300">
       <div class="flex items-center gap-4 mb-8">
         <button 
-          @click="$emit('navigate', 'home')"
+          @click="router.push('/')"
           class="text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-2 cursor-pointer"
         >
           <ArrowLeft :size="20" />

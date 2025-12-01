@@ -108,59 +108,56 @@ onUnmounted(() => {
     :style="{ background: progressGradient }"
   >
     <div class="bg-white dark:bg-zinc-900 rounded-[calc(1.5rem-3px)] p-8 h-full w-full relative transition-colors duration-300">
-      <!-- Settings Button -->
-      <button 
-        @click="router.push('/settings')"
-        class="absolute top-8 left-8 text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
-        title="Settings (S)"
-      >
-        <Settings :size="24" />
-      </button>
+      <div class="flex justify-center gap-6 mb-8">
+        <!-- Settings Button -->
+        <button 
+          @click="router.push('/settings')"
+          class="text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
+          title="Settings (S)"
+        >
+          <Settings :size="24" />
+        </button>
 
-      <!-- Shortcuts Button -->
-      <button 
-        @click="$emit('open-shortcuts')"
-        class="absolute top-8 left-20 text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
-        title="Keyboard Shortcuts"
-      >
-        <Keyboard :size="24" />
-      </button>
+        <!-- Shortcuts Button -->
+        <button 
+          @click="$emit('open-shortcuts')"
+          class="text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
+          title="Keyboard Shortcuts"
+        >
+          <Keyboard :size="24" />
+        </button>
 
-      <!-- About/Help Button -->
-      <button 
-        @click="router.push('/about')"
-        class="absolute top-8 left-32 text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
-        title="About & Help"
-      >
-        <Info :size="24" />
-      </button>
+        <!-- About/Help Button -->
+        <button 
+          @click="router.push('/about')"
+          class="text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
+          title="About & Help"
+        >
+          <Info :size="24" />
+        </button>
 
-      <!-- Mute Toggle -->
-      <button 
-        @click="toggleMute"
-        class="absolute top-8 right-16 text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-zinc-300 transition-colors cursor-pointer"
-        :title="isMuted ? 'Unmute' : 'Mute'"
-      >
-        <VolumeX v-if="isMuted" :size="24" />
-        <Volume2 v-else :size="24" />
-      </button>
+        <!-- Mute Toggle -->
+        <button 
+          @click="toggleMute"
+          class="text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-zinc-300 transition-colors cursor-pointer"
+          :title="isMuted ? 'Unmute' : 'Mute'"
+        >
+          <VolumeX v-if="isMuted" :size="24" />
+          <Volume2 v-else :size="24" />
+        </button>
 
-      <!-- Dark Mode Toggle -->
-      <button 
-        @click="toggleDarkMode"
-        class="absolute top-8 right-8 text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-zinc-300 transition-colors cursor-pointer"
-        :title="isDarkMode ? 'Light Mode' : 'Dark Mode'"
-      >
-        <Sun v-if="isDarkMode" :size="24" />
-        <Moon v-else :size="24" />
-      </button>
+        <!-- Dark Mode Toggle -->
+        <button 
+          @click="toggleDarkMode"
+          class="text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-zinc-300 transition-colors cursor-pointer"
+          :title="isDarkMode ? 'Light Mode' : 'Dark Mode'"
+        >
+          <Sun v-if="isDarkMode" :size="24" />
+          <Moon v-else :size="24" />
+        </button>
+      </div>
 
       <div class="flex flex-col items-center space-y-12">
-        <!-- Header -->
-        <div class="flex items-center gap-2">
-          <span class="text-red-500 text-xl">🍅</span>
-          <h1 class="text-lg font-medium text-gray-600 dark:text-zinc-400">FocusFlow</h1>
-        </div>
 
         <!-- Timer -->
         <div class="flex flex-col items-center space-y-8 w-full">

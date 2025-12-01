@@ -1,7 +1,8 @@
 <script setup>
+import { useRouter } from 'vue-router'
 import { ArrowLeft, Timer, ListTodo, Palette, Keyboard, Bell, Zap } from 'lucide-vue-next'
 
-const emit = defineEmits(['navigate'])
+const router = useRouter()
 
 const features = [
   {
@@ -61,7 +62,7 @@ const tips = [
     <div class="w-full max-w-4xl bg-white dark:bg-zinc-900 rounded-3xl p-8 shadow-2xl border border-gray-200 dark:border-zinc-800 relative transition-colors duration-300">
       <!-- Back Button -->
       <button 
-        @click="$emit('navigate', 'home')"
+        @click="router.push('/')"
         class="absolute top-8 left-8 text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white transition-colors flex items-center gap-2 cursor-pointer"
       >
         <ArrowLeft :size="20" />

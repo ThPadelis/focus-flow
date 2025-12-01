@@ -8,7 +8,7 @@ defineProps({
 
 defineEmits(['start', 'pause', 'reset'])
 
-import { useTimer } from '../composables/useTimer'
+import { useTimer } from '../../composables/useTimer'
 
 const { notificationPermission, requestNotificationPermission, sendNotification } = useTimer()
 </script>

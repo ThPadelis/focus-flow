@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './', // Use relative base path for flexibility
+  base: '/focus-flow/',
   plugins: [
     vue(),
     VitePWA({
